@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductsInCategoryComponent } from './products-in-category/products-in-category.component';
 import { ProductsTypeComponent } from './products-type/products-type.component';
 import { AllProductsComponent } from './all-products/all-products.component';
+import { UserRegisterationComponent } from './user-registeration/user-registeration.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -26,13 +29,16 @@ import { AllProductsComponent } from './all-products/all-products.component';
     ProductDetailsComponent,
     ProductsInCategoryComponent,
     ProductsTypeComponent,
-    AllProductsComponent
+    AllProductsComponent,
+    UserRegisterationComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

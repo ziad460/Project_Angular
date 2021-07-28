@@ -20,4 +20,8 @@ export class ProductComponent implements OnInit {
     this.router.navigate(['/product/productsInType' , typeId]);
   }
   
+  addToCart(product_ID:number)
+  {
+    this.router.navigate(['/cart' , product_ID]);
+  }
 }

@@ -35,4 +35,8 @@ export class ProductsTypeComponent implements OnInit {
     this.router.navigate(['/productdetails' , product.Product_ID]);
   }
 
+  addToCart(product_ID:number)
+  {
+    this.router.navigate(['/cart' , product_ID]);
+  }
 }

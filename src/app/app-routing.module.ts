@@ -6,6 +6,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductsTypeComponent } from './products-type/products-type.component';
 import { ProductsInCategoryComponent } from './products-in-category/products-in-category.component';
 import { AllProductsComponent } from './all-products/all-products.component';
+import { UserRegisterationComponent } from './user-registeration/user-registeration.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:'full'},
@@ -17,6 +19,8 @@ const routes: Routes = [
       {path:'productsInCat/:catId' , component:ProductsInCategoryComponent }
     ]},
   {path:'productdetails/:id' , component:ProductDetailsComponent },
+  {path:'register' , component:UserRegisterationComponent},
+  {path:'cart/:product_ID' , component:CartComponent}
 ];
 
 @NgModule({
