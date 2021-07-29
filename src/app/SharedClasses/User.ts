@@ -1,16 +1,12 @@
-export class UserLogin {
-    Email:string = "";
-    Password:string = "";
-    RememberMe:boolean = false;
+export class User {
+    userName:string = "";
+    password:string = "";
+    grant_type:string = "password";
 }
 
-export class UserRegister {
-    Email:string = "";
-    Password:string = "";
-    ConfirmPassword:string = "";
-}
-
-export class User
+export class UserToken
 {
-    User_Email:string|null = "";
+    access_token:string = "";
+    token_type:string = "" ;
+    expires_in:number = 0;
 }

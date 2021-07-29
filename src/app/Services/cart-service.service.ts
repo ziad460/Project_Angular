@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cart } from '../SharedClasses/Cart';
 import { Observable } from 'rxjs';
-import { UserLogin, User } from '../SharedClasses/User';
+//import { UserLogin, User } from '../SharedClasses/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartServiceService {
 
-  user:User = { User_Email: localStorage.getItem("AuthenticatedUser") }
+  //user:User = { User_Email: localStorage.getItem("AuthenticatedUser") }
 
   _urlAddCart:string = "https://localhost:44353/api/addcart/";
   _urlProductsInCart:string = "https://localhost:44353/api/cart/products/"

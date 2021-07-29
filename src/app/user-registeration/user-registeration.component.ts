@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../Services/user-service.service';
-import { UserLogin, UserRegister } from '../SharedClasses/User';
+import { User } from '../SharedClasses/User';
 
 @Component({
   selector: 'app-user-registeration',
@@ -9,8 +9,7 @@ import { UserLogin, UserRegister } from '../SharedClasses/User';
 })
 export class UserRegisterationComponent implements OnInit {
 
-  userLogin:UserLogin = new UserLogin();
-  userRegister:UserRegister = new UserRegister();
+  authUser:User = new User();
   
   constructor(private user:UserServiceService) { }
 
@@ -19,18 +18,27 @@ export class UserRegisterationComponent implements OnInit {
 
   onLogin()
   {
-    this.user.checkUser(this.userLogin).subscribe(
+    this.user.checkUser(this.authUser).subscribe(
       data =>
       {
         console.log(data);
+      },
+      error =>
+      {
+        console.log(error);
       })
+
   }
   onRegister()
   {
-    this.user.enrolleUser(this.userRegister).subscribe(
+    this.user.enrolleUser(this.authUser).subscribe(
       data =>
       {
         console.log(data);
+      },
+      error =>
+      {
+        console.log(error);
       })
   }
 }

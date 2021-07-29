@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { UserLogin, UserRegister } from '../SharedClasses/User';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User, UserToken } from '../SharedClasses/User';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,19 +8,45 @@ import { Observable } from 'rxjs';
 })
 export class UserServiceService {
 
-  _urlRegister:string = "https://localhost:44353/api/account/register";
+  _urlRegister:string = "https://localhost:44353/register";
   
-  _urlLogin:string = "https://localhost:44353/api/account/login";
+  _urlLogin:string = "https://localhost:44353/login";
 
   constructor(private http:HttpClient) { }
 
-  enrolleUser(user:UserRegister):Observable<UserRegister>
+  enrolleUser(user:User):Observable<UserToken>
   {
-    return this.http.post<UserRegister>(this._urlRegister , user);
+    const params = new FormData();
+    params.append('username' , user.userName);
+    params.append('password' , user.password);
+    params.append('grant_type' , user.grant_type);
+    const httpOptions = {
+      headers : new HttpHeaders({
+        'content-type':'application/x-www-form-urlencoded',
+      })
+    }
+    return this.http.post<UserToken>(this._urlRegister , params , httpOptions);
+    // const headers = {'content-type' : 'application/json'};
+    // const body = JSON.stringify(user);
+    // console.log(body);
+    // return this.http.post<UserToken>(this._urlRegister , body , {'headers':headers});
   }
 
-  checkUser(user:UserLogin):Observable<UserLogin>
+  checkUser(user:User):Observable<UserToken>
   {
-    return this.http.post<UserLogin>(this._urlLogin , user);
+    const params = new FormData();
+    params.append('username' , user.userName);
+    params.append('password' , user.password);
+    params.append('grant_type' , user.grant_type);
+    const httpOptions = {
+      headers : new HttpHeaders({
+        'content-type':'application/x-www-form-urlencoded',
+      })
+    }
+    return this.http.post<UserToken>(this._urlLogin , params , httpOptions);
+    // const headers = {'content-type' : 'application/json'};
+    // const body = JSON.stringify(user);
+    // console.log(body);
+    // return this.http.post<UserToken>(this._urlLogin , body , {'headers':headers});
   }
 }
