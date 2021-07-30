@@ -19,10 +19,10 @@
                                     <h2>Login to your account</h2>
                                     <form #userForm="ngForm" (ngSubmit)="onLogin()">
                                         <div class="form-group">
-                                            <input type="email" name="txtEmail" #email="ngModel" [(ngModel)]="authUser.userName" class="form-control" placeholder=" Email" >
+                                            <input type="email" name="txtEmail" #email="ngModel" [(ngModel)]="authUserLogin.userName" class="form-control" placeholder=" Email" >
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="txtPassword" #password="ngModel" [(ngModel)]="authUser.password" class="form-control my-3" placeholder=" Password " required>
+                                            <input type="password" name="txtPassword" #password="ngModel" [(ngModel)]="authUserLogin.password" class="form-control my-3" placeholder=" Password " required>
                                         </div>
                                         <div class="form-group">
                                             <input type="checkbox" name="chkRememberMe"> Keep me signed in <br>
@@ -41,10 +41,10 @@
                                     <h2>New User Signup!</h2>
                                     <form #userForm="ngForm" (ngSubmit)="onRegister()">
                                         <div class="form-group">
-                                            <input type="email" name="txtEmail" #email="ngModel" [(ngModel)]="authUser.userName" class="form-control" placeholder=" Email" >
+                                            <input type="email" name="txtEmail" #email="ngModel" [(ngModel)]="authUserRegister.userName" class="form-control" placeholder=" Email" >
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="txtPassword" #password="ngModel" [(ngModel)]="authUser.password" class="form-control my-3" placeholder=" Password " required>
+                                            <input type="password" name="txtPassword" #password="ngModel" [(ngModel)]="authUserRegister.password" class="form-control my-3" placeholder=" Password " required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="txtConfirmPassword" class="form-control" placeholder=" Confirm Password " required> <br>

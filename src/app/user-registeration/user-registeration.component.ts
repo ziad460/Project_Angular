@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../Services/user-service.service';
-import { User } from '../SharedClasses/User';
+import { UserLogin, UserRegister } from '../SharedClasses/User';
 
 @Component({
   selector: 'app-user-registeration',
@@ -9,7 +9,8 @@ import { User } from '../SharedClasses/User';
 })
 export class UserRegisterationComponent implements OnInit {
 
-  authUser:User = new User();
+  authUserLogin:UserLogin = new UserLogin();
+  authUserRegister:UserRegister = new UserRegister();
   
   constructor(private user:UserServiceService) { }
 
@@ -18,27 +19,18 @@ export class UserRegisterationComponent implements OnInit {
 
   onLogin()
   {
-    this.user.checkUser(this.authUser).subscribe(
+    this.user.checkUser(this.authUserLogin).subscribe(
       data =>
       {
-        console.log(data);
-      },
-      error =>
-      {
-        console.log(error);
+        localStorage.setItem("AuthenticatedUser" , data.access_token);
       })
-
   }
   onRegister()
   {
-    this.user.enrolleUser(this.authUser).subscribe(
+    this.user.enrolleUser(this.authUserRegister).subscribe(
       data =>
       {
-        console.log(data);
-      },
-      error =>
-      {
-        console.log(error);
+        localStorage.setItem("AuthenticatedUser" , data.access_token);
       })
   }
 }

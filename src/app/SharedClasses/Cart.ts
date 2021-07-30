@@ -5,4 +5,4 @@ export class Cart {
     Product_Image:string="" ;
     Product_Quantity:number=1;
     Cart_ID:number=0;
-}
+}   

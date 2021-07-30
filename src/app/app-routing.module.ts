@@ -8,6 +8,7 @@ import { ProductsInCategoryComponent } from './products-in-category/products-in-
 import { AllProductsComponent } from './all-products/all-products.component';
 import { UserRegisterationComponent } from './user-registeration/user-registeration.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:'full'},
@@ -20,7 +21,9 @@ const routes: Routes = [
     ]},
   {path:'productdetails/:id' , component:ProductDetailsComponent },
   {path:'register' , component:UserRegisterationComponent},
-  {path:'cart/:product_ID' , component:CartComponent}
+  {path:'cart' , component:CartComponent},
+  {path:'cart/:product_ID' , component:CartComponent},
+  {path:'checkout' , component:CheckOutComponent}
 ];
 
 @NgModule({

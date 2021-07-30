@@ -16,6 +16,7 @@ import { ProductsTypeComponent } from './products-type/products-type.component';
 import { AllProductsComponent } from './all-products/all-products.component';
 import { UserRegisterationComponent } from './user-registeration/user-registeration.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 
 
@@ -31,7 +32,8 @@ import { CartComponent } from './cart/cart.component';
     ProductsTypeComponent,
     AllProductsComponent,
     UserRegisterationComponent,
-    CartComponent
+    CartComponent,
+    CheckOutComponent
   ],
   imports: [
     BrowserModule,

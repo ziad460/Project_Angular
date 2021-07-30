@@ -1,3 +1,88 @@
-<p>cart works!</p>
+<!-- -------------------------------Start Cart Shopping --------------------------- -->
+<section class="cart-shopping">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active ps-0" aria-current="page">Shopping Cart</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-lg-12 pb-5">
+                <img src="images/cart/advertisement.jpg" alt="" style="width: 100%;"/>
+            </div>
+            <div class="col-lg-12 table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let item of CartAdded">
+                            <td>
+                                <a (click)="goToProductDetails(item.Product_ID)"><img src={{imgSrc}}{{item.Product_Image}}></a>
+                                <h4><a (click)="goToProductDetails(item.Product_ID)">{{item.Product_Name}}</a></h4>
+                            </td>
+                            <td>
+                                <div>
+                                    <a class="cart_quantity_up" (click) = "chgQuantity(item.Cart_ID)"><i class="bi bi-plus"></i> </a>
+                                    <input class="cart_quantity_input" type="text" name="quantity" [(ngModel)] = "changedQuantity" autocomplete="off" size="2" pattern="^[0-9]">
+                                </div>
+                            </td>
+                            <td><p>{{item.Product_Price * item.Product_Quantity | currency}}</p></td>
+                            <td>
+                                <p><a class="cart_quantity_delete" (click) = "deleteProductFromCart(item.Product_ID)"><i class="bi bi-x-square"></i></a></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 
-{{CartAdded | json}}
+<!-- -------------------------------End Cart Shopping --------------------------- -->
+
+<!-- -------------------------------Start do action --------------------------- -->
+
+<section class="do-action pb-5">
+    <div class="container">
+        <div class="do-action-heading">
+            <h3>What would you like to do next?</h3>
+            <p>Choose if you wanna CheckOut or update your products.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 action">
+                <ul>
+                    <li>Cart Sub Total
+                        <span class="float-end">{{totalPrice | currency}}</span>
+                    </li>
+                    <li>
+                        Echo Tax
+                        <span class="float-end">$3</span>
+                    </li>
+                    <li>
+                        Shipping Cost
+                        <span class="float-end">Free</span>
+                    </li>
+                    <li>
+                        Total
+                        <span class="float-end">{{totalPrice + 3 | currency}}</span>
+                    </li>
+                </ul>
+                <a class="btn" (click) = "checkOut()">Check Out</a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 advertise">
+                <img src="../../assets/images/home/shipping.jpg">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- -------------------------------End do action --------------------------- -->

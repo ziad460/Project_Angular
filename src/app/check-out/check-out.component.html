@@ -1,0 +1,143 @@
+<section class="cart-shopping">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active ps-0" aria-current="page">CheckOut</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-lg-12 table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of userCartProducts">
+                            <td>
+                                <a ><img src={{imgSrc}}{{product.Product_Image}}></a>
+                                <h4><a >{{product.Product_Name}}</a></h4>
+                            </td>
+                            <td>
+                                <p>{{product.Product_Quantity}}</p>
+                            </td>
+                            <td><p>{{product.Product_Price * product.Product_Quantity | currency}}</p></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <section class="total-order">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-6 col-sm-12"></div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 total-result">
+                                <ul>
+                                    <li>Cart Sub Total
+                                        <span class="float-end">{{totalPrice | currency}}</span>
+                                    </li>
+                                    <li>
+                                        Echo Tax
+                                        <span class="float-end">$3</span>
+                                    </li>
+                                    <li>
+                                        Shipping Cost
+                                        <span class="float-end">Free</span>
+                                    </li>
+                                    <li>
+                                        Total
+                                        <span class="float-end">{{totalPrice + 3 | currency}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- -------------------------------End Cart Shopping --------------------------- -->
+
+<!-- -------------------------------Start Shipping ------------------------------ -->
+
+<section class="shipping">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <a href="#" class="btn"><strong>Register</strong></a> Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+
+            <div class="col-lg-12 py-5">
+
+                <form #userForm="ngForm" (ngSubmit)="goShipping()">
+                    <div class="container shipping-bill">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-12"> <!-- this div appears only if user isn't Register -->
+                                <p>Shopper Information</p>
+                                <input type="text" class="form-control" placeholder=" User Name" required>
+                                <input type="email" class="form-control" placeholder=" User Email" required>
+                                <input type="text" class="form-control" placeholder=" User Phone" required>
+                                <input type="text" class="form-control" placeholder=" Another Phone" required>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                <p>Bill To</p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder=" First Name" required name="txtFname" [(ngModel)]="Shipping.Shipping_FName">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder=" Second Name" required name="txtFname" [(ngModel)]="Shipping.Shipping_LName">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder=" Email" required name="txtFname" [(ngModel)]="Shipping.Shipping_Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder=" Address 1" required name="txtFname" [(ngModel)]="Shipping.Address1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder=" Address 2" required name="txtFname" [(ngModel)]="Shipping.Address2">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder=" Zip/Postal Code" required name="txtFname" [(ngModel)]="Shipping.Postal_Code">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option value="lusxor" selected>Luxor</option>
+                                        <option value="asswan" >Cairo</option>
+                                        <option value="asswan" >Asswan</option>
+                                        <option value="asswan" >Sohag</option>
+                                        <option value="asswan" >Qena</option>
+                                        <option value="asswan" >Assiut</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder=" Phone 1" required name="txtFname" [(ngModel)]="Shipping.Phone1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder=" Phone 2" required name="txtFname" [(ngModel)]="Shipping.Phone2">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                <p>Shipping Order Note</p>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Notes about your order, Special Notes for Delivery" cols="20" name="txtFname" [(ngModel)]="Shipping.Notes"></textarea>
+                                </div>
+                                <input type="submit" class="btn btns" value="Confirm">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- -------------------------------End Shipping ------------------------------ -->
