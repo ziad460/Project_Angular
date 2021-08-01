@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { UserToken, UserRegister, UserLogin } from '../SharedClasses/User';
 import { Observable } from 'rxjs';
 
@@ -16,29 +16,19 @@ export class UserServiceService {
 
   enrolleUser(user:UserRegister):Observable<any>
   {
-    const headers = {
-      'Accept':'application/json',
-      'Content-Type' : 'application/json'
-    };
-    const body = JSON.stringify({
-      'Grant_Type':'password',
-      'username':user.userName,
-      'password':user.password
+    const header = new HttpHeaders({
+      "Content-type": "application/json"
     });
-    return this.http.post<any>(this._urlRegister , body , {headers:headers});
+    const body = 'grant_type=password&username='+user.userName+'&password='+user.password;
+    return this.http.post<any>(this._urlRegister , body , {headers:header});
   }
 
   checkUser(user:UserLogin):Observable<any>
   {
-    const headers = {
-      'Accept':'application/json',
-      'Content-Type' : 'application/json'
-    };
-    const body = JSON.stringify({
-      'Grant_Type':'password',
-      'username':user.userName,
-      'password':user.password
+    const header = new HttpHeaders({
+      "Content-type": "application/json"
     });
-    return this.http.post<any>(this._urlLogin , body , {headers:headers});
+    const body = 'grant_type=password&username='+user.userName+'&password='+user.password;
+    return this.http.post<any>(this._urlLogin , body , {headers:header});
   }
 }

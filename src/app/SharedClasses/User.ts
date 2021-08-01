@@ -8,6 +8,7 @@ export class UserRegister
 {
     userName:string = "";
     password:string = "";
+    confirmPassword:string= "";
     grant_type:string = "password";
 }
 

@@ -11,6 +11,14 @@ export class UserRegisterationComponent implements OnInit {
 
   authUserLogin:UserLogin = new UserLogin();
   authUserRegister:UserRegister = new UserRegister();
+
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
+
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorLoginMessage = '';
   
   constructor(private user:UserServiceService) { }
 
